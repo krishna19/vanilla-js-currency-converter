@@ -3,7 +3,7 @@
 
 ## Demo
 
-[Currency Converter](https://zoltantothcom.github.io/vanilla-js-currency-converter/)
+[**CURRENCY CONVERTER**](https://zoltantothcom.github.io/vanilla-js-currency-converter/)
 
 
 ## Options
