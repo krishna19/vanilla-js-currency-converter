@@ -5,8 +5,10 @@ var converter_1 = new CurrencyConverter({
   elem: 'converter_1'
 });
 var converter_2 = new CurrencyConverter({
-  elem: 'converter_2'
+  elem: 'converter_2',
+  title: 'Awesome Widget'
 });
 var converter_3 = new CurrencyConverter({
-  elem: 'converter_3'
+  elem: 'converter_3',
+  title: 'One More'
 });
