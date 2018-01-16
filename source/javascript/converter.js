@@ -79,7 +79,10 @@ export default (options) => {
     *
     */
     function checkRate() {
-        if (invalidAmountCheck()) return;
+        if (invalidAmountCheck()) {
+            manageWarning('Please enter a valid positive number.');
+            return;
+        }
 
         let storedRates = getCahedRates();
 
@@ -91,11 +94,13 @@ export default (options) => {
         } else {
             doConversion();
         }
+
+        manageWarning();
     }
 
 
     /**
-    * If the amount empty or NaN - we don't need to do anything.
+    * If the amount empty or NaN or negative - we don't need to do anything.
     *
     */
     function invalidAmountCheck() {
@@ -268,9 +273,30 @@ export default (options) => {
     *
     */
     function handleError() {
-        let warning = document.createElement('p');
-        warning.innerText = 'An unexpected error occured. Please try again later.';
+        manageWarning('An unexpected API error occured. Please try again later.');
+    }
 
-        form.prepend(warning);
+
+    /**
+    * Show or hide warnings as needed.
+    *
+    * @param {string} error - Error message to show.
+    *
+    */
+    function manageWarning(error) {
+        // remove present warning, if any
+        const elem = element.getElementsByClassName('converter__error')[0];
+        if (elem) {
+            elem.parentNode.removeChild(elem);
+        }
+
+        // create the new warning, if any
+        if (error) {
+            let warning = document.createElement('p');
+            warning.className = 'converter__error';
+            warning.innerText = error;
+
+            form.prepend(warning);
+        }
     }
 }
