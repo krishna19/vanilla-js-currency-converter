@@ -10,5 +10,5 @@
 
 Option | Type | Default | Description
 ------ | ---- | ------- | -----------
-elem | string |  | HTML _id_ of the converter container in the HTML markup.
-title | string | &laquo;Currency Converter&raquo; | The widget title to show on page.
+elem | string | converter | HTML _id_ of the converter container in the HTML markup.
+title | string | Currency Converter | The widget title to show on page.
