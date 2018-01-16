@@ -1,6 +1,8 @@
 // colors
-$grey  : #ccc;
-$blue  : #00f;
+$red   : #cf0000;
+$grey  : #cccccc;
+$blue  : #0000ff;
+$pink  : #fec1cc;
 $orange: #ff4500;
 $white : #f8f8f8;
 
@@ -59,8 +61,8 @@ p {
 }
 
 .converter__error {
-  border: 2px solid pink;
-  color: red;
+  border: 2px solid $pink;
+  color: $red;
   padding: .5rem;
 }
 
