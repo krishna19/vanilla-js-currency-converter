@@ -102,7 +102,7 @@ export default (options) => {
         const val = element.getElementsByClassName('converter__input')[0].value;
         const regex = /[0-9]|\./;
 
-        if (!val || !regex.test(val)) {
+        if (!val || !regex.test(val) || val < 0) {
             return true;
         }
     }
