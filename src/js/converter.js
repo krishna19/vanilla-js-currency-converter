@@ -18,8 +18,9 @@ class CurrencyConverter {
         this.element = document.getElementById(options.elem || 'converter');
         const title = options.title || 'Currency Converter';
 
-        const form = document.createElement('form'),
-            fieldset = document.createElement('fieldset'),
+        this.form = document.createElement('form');
+
+        const fieldset = document.createElement('fieldset'),
             legend = document.createElement('legend'),
 
             rowOne = this.createFormFields('original'),
@@ -49,19 +50,16 @@ class CurrencyConverter {
         fieldset.appendChild(rowTwo);
         fieldset.appendChild(disclaimer);
 
-        form.appendChild(fieldset);
-        form.className = 'converter';
+        this.form.appendChild(fieldset);
+        this.form.className = 'converter';
 
-        this.element.appendChild(form);
+        this.element.appendChild(this.form);
 
         this.checkRate = this.checkRate.bind(this);
         this.handleSuccess = this.handleSuccess.bind(this);
         this.createFormFields = this.createFormFields.bind(this);
         this.invalidAmountCheck = this.invalidAmountCheck.bind(this);
     };
-
-
-
 
 
     /**
@@ -89,7 +87,6 @@ class CurrencyConverter {
     *
     */
     checkRate() {
-        console.log(this)
         if (this.invalidAmountCheck()) {
             this.manageWarning('Please enter a valid positive number.');
             return;
@@ -307,11 +304,11 @@ class CurrencyConverter {
             warning.className = 'converter__error';
             warning.innerText = error;
 
-            form.prepend(warning);
+            this.form.prepend(warning);
         }
     }
 }
 
-    const carousel = new CurrencyConverter({
-        elem: 'converter_1'
-    });
+const carousel = new CurrencyConverter({
+    elem: 'converter_1'
+});
