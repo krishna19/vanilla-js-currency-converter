@@ -1,0 +1,93 @@
+// colors
+$grey  : #ccc;
+$blue  : #00f;
+$orange: #ff4500;
+$white : #f8f8f8;
+
+// mixins
+@mixin input {
+  border: 1px solid $grey;
+  border-radius: 3px;
+  font-size: 1.25rem;
+  padding: .33rem .66rem;
+}
+
+
+//
+// styles
+body {
+  font: 400 16px sans-serif;
+} 
+
+label {
+  display: none;
+}
+
+p {
+  font-size: .875rem;
+  margin: 1rem 0 .5rem;
+}
+
+
+// form
+.converter {
+  min-width: 300px;
+  max-width: 480px;
+  margin-bottom: 2rem;
+}
+
+.converter__row {
+  display: flex;
+}
+
+.converter__input {
+  @include input;
+
+  flex-grow: 1;
+  width: 65%;
+
+  &:disabled {
+    background: $white;
+  }
+}
+
+.converter__select {
+  @include input;
+
+  margin-left: .5rem;
+  width: 100px;
+}
+
+.converter__error {
+  border: 2px solid $orange;
+  color: $orange;
+  padding: .5rem;
+}
+
+
+// disclaimer
+.disclaimer {
+  margin: 1rem 0;
+  text-align: right;
+}
+
+.disclaimer__button {
+  background: transparent;
+  border: 0;
+  color: $blue;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.disclaimer__text {
+  border: 1px solid $orange;
+  font-size: .8rem;
+  padding: .5rem;
+  text-align: left;
+
+  &--hidden {
+    display: none;
+  }
+}
