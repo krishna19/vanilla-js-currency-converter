@@ -10,13 +10,15 @@
 *
 * @class
 * @param {object} options - User defined settings for the converter.
-* @param {string} options.elem [options.elem=converter] - The HTML id of the converter container.
-* @param {string} options.title [options.title=Currency Converter] - Widget title.
+* @param {string} options.container [options.container=converter] - The HTML id of the converter container.
+* @param {string} options.widgetTitle [options.widgetTitle=Currency Converter] - Widget title.
+* @param {array} options.currencyList [options.currencyList=['CAD', 'USD', 'EUR']] - List of currencies to convert between.
 */
 class CurrencyConverter {
     constructor(options) {
-        this.element = document.getElementById(options.elem || 'converter');
-        const title = options.title || 'Currency Converter';
+        this.element = document.getElementById(options.container || 'converter');
+        this.currencies = options.currencyList || ['CAD', 'USD', 'EUR'];
+        const title = options.widgetTitle || 'Currency Converter';
 
         this.form = document.createElement('form');
 
@@ -56,6 +58,7 @@ class CurrencyConverter {
         this.element.appendChild(this.form);
 
         this.checkRate = this.checkRate.bind(this);
+        this.handleError = this.handleError.bind(this);
         this.handleSuccess = this.handleSuccess.bind(this);
         this.createFormFields = this.createFormFields.bind(this);
         this.invalidAmountCheck = this.invalidAmountCheck.bind(this);
@@ -158,8 +161,7 @@ class CurrencyConverter {
         inputLabel.innerText = 'Type in amount:';
 
         // currency select
-        const select = document.createElement('select'),
-            currencies = ['CAD', 'USD', 'EUR'];
+        const select = document.createElement('select');
 
         select.classList.add('converter__select');
         select.id = `currency_${id}`;
@@ -168,10 +170,10 @@ class CurrencyConverter {
         selectLabel.htmlFor = `currency_${id}`;
         selectLabel.innerText = 'Select currency:';
 
-        for (let i = 0; i < currencies.length; i++) {
+        for (let i = 0; i < this.currencies.length; i++) {
             const option = document.createElement('option');
-            option.value = currencies[i];
-            option.text = currencies[i];
+            option.value = this.currencies[i];
+            option.text = this.currencies[i];
             select.appendChild(option);
         }
 
@@ -310,5 +312,7 @@ class CurrencyConverter {
 }
 
 const carousel = new CurrencyConverter({
-    elem: 'converter_1'
+    container: 'converter_1',
+    currencyList: ['RUR', 'HUF', 'UAH'],
+    widgetTitle: 'ES2015 Currency Converter'
 });
