@@ -2,7 +2,7 @@
   "name": "vanilla-js-currency-converter",
   "version": "1.0.0",
   "description": "",
-  "license": "",
+  "license": "Unlicense",
   "main": "index.js",
   "scripts": {
     "start": "gulp",
