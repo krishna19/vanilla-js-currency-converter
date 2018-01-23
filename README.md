@@ -24,24 +24,10 @@ title | string | Currency Converter | The widget title to show on page.
     $ npm install
     ```
 
-2. Start the development server, open `http://localhost:8080` and start fiddling around
+2. Start the development server, open `http://localhost:3000` and start fiddling around
 
     ```sh
     $ npm start
     ```
 
 3. Done!
-
-
-## Build
-
-```sh
-$ npm run build
-```
-
-This will create a `docs` folder containing a self-sufficient example with 3 files:
- - `index.html`
- - `style.css`
-  - `index.js`
-
-These files are static and can be opened on any web server.
