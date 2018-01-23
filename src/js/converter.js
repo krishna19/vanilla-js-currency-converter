@@ -154,7 +154,7 @@ class CurrencyConverter {
             input.disabled = true;
         }
 
-        input.addEventListener('input', this.checkRate.bind(this), false);
+        input.addEventListener('input', (e) => this.checkRate(e), false);
 
         const inputLabel = document.createElement('label');
         inputLabel.htmlFor = `amount_${id}`;
@@ -177,7 +177,7 @@ class CurrencyConverter {
             select.appendChild(option);
         }
 
-        select.addEventListener('change', this.checkRate.bind(this), false);
+        select.addEventListener('change', (e) => this.checkRate(e), false);
 
         // appending all the elements
         container.appendChild(inputLabel);
@@ -313,6 +313,5 @@ class CurrencyConverter {
 
 const carousel = new CurrencyConverter({
     container: 'converter_1',
-    currencyList: ['RUR', 'HUF', 'UAH'],
     widgetTitle: 'ES2015 Currency Converter'
 });
