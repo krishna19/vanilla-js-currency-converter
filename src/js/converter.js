@@ -35,11 +35,7 @@ class CurrencyConverter {
 
         // caching for the current day in local storage
         this.base = null;
-        this.currencyRates = {
-                'CAD': null,
-                'USD': null,
-                'EURO': null
-            };
+        this.currencyRates = {};
         localStorage.setItem('currencyRates', JSON.stringify(this.currencyRates));
 
         // putting the markup together
