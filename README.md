@@ -10,8 +10,9 @@
 
 Option | Type | Default | Description
 ------ | ---- | ------- | -----------
-elem | string | converter | HTML _id_ of the converter container in the HTML markup.
-title | string | Currency Converter | The widget title to show on page.
+container | string | converter | HTML _id_ of the converter container in the HTML markup.
+widgetTitle | string | Currency Converter | The widget title to show on page.
+currencyList | array | ['CAD', 'USD', 'EUR'] | List of currencies for the widget.
 
 
 ## Running locally
