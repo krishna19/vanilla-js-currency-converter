@@ -10,7 +10,7 @@
 *
 * @class
 * @param {object} options - User defined settings for the converter.
-* @param {string} options.container [options.container=converter] - The HTML id of the converter container.
+* @param {string} options.container [options.container=converter] - The HTML id of the container in the markup.
 * @param {string} options.widgetTitle [options.widgetTitle=Currency Converter] - Widget title.
 * @param {array} options.currencyList [options.currencyList=['CAD', 'USD', 'EUR']] - List of currencies to convert between.
 */
@@ -58,7 +58,7 @@ class CurrencyConverter {
         this.handleSuccess = this.handleSuccess.bind(this);
         this.createFormFields = this.createFormFields.bind(this);
         this.invalidAmountCheck = this.invalidAmountCheck.bind(this);
-    };
+    }
 
 
     /**
@@ -75,7 +75,8 @@ class CurrencyConverter {
         if (this.base === currencyConverted) {
             amountConverted.value = amountOriginal;
         } else {
-            amountConverted.value = (amountOriginal * storedRates[this.base]['rates'][currencyConverted]).toFixed(2);
+            amountConverted.value = 
+                (amountOriginal * storedRates[this.base].rates[currencyConverted]).toFixed(2);
         }
     }
 
@@ -96,7 +97,8 @@ class CurrencyConverter {
         // if rates not present or outdated - it's time to use https://api.fixer.io
         this.base = this.element.getElementsByClassName('converter__select')[0].value;
 
-        if (!storedRates[this.base] || storedRates[this.base] && storedRates[this.base]['date'] !== new Date().toISOString().slice(0, 10)) {
+        if (!storedRates[this.base] || storedRates[this.base] && storedRates[this.base].date !== 
+                new Date().toISOString().slice(0, 10)) {
             this.getRate(this.base).then(this.handleSuccess, this.handleError);
         } else {
             this.doConversion();
@@ -252,7 +254,7 @@ class CurrencyConverter {
                 } else {
                     // console.log("xhr processing going on");
                 }
-            }
+            };
             // console.log("request sent succesfully");
         });
 
@@ -307,7 +309,7 @@ class CurrencyConverter {
     }
 }
 
-const carousel = new CurrencyConverter({
+const converter = new CurrencyConverter({
     container: 'converter_1',
     widgetTitle: 'ES2015 Currency Converter'
 });

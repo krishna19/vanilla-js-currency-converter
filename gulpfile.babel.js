@@ -7,12 +7,14 @@ const gulp       = require('gulp'),
       buffer     = require('vinyl-buffer'),
       uglify     = require('gulp-uglify'),
       rename     = require('gulp-rename'),
+      jshint     = require('gulp-jshint'),
+      stylish    = require('jshint-stylish'),
       browSync   = require('browser-sync').create(),
       sass       = require('gulp-sass'),
       pug        = require('gulp-pug'),
       cleanCSS   = require('gulp-clean-css');
 
-gulp.task('build-js', () => {
+gulp.task('build-js', ['lint-js'], () => {
   return browserify({ entries: './src/js/converter.js', debug: true })
     .transform('babelify', { 
       presets: ['es2015'] 
@@ -26,6 +28,12 @@ gulp.task('build-js', () => {
     }))
     .pipe(gulp.dest('./dist'))
     .pipe(browSync.stream());
+});
+
+gulp.task('lint-js', function() {
+  return gulp.src('./src/js/*.js')
+    .pipe(jshint('.jshintrc'))
+    .pipe(jshint.reporter(stylish));
 });
 
 gulp.task('build-css', function() {
