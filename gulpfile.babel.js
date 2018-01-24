@@ -21,31 +21,31 @@ gulp.task('build-js', () => {
     .pipe(source('converter.js'))
     .pipe(buffer())
     .pipe(uglify())
-    .pipe(rename({ 
-			suffix: '.min' 
-		}))
+    .pipe(rename({
+      suffix: '.min' 
+    }))
     .pipe(gulp.dest('./dist'))
     .pipe(browSync.stream());
 });
 
 gulp.task('build-css', function() {
-	gulp.src('./src/scss/*.scss')
+  gulp.src('./src/scss/*.scss')
     .pipe(sass())
     .pipe(cleanCSS())
-		.pipe(rename({ 
-			suffix: '.min' 
-		}))
-		.pipe(gulp.dest('./dist'))
-		.pipe(browSync.stream());
+		.pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest('./dist'))
+    .pipe(browSync.stream());
 });
 
 gulp.task('build-html', function() {
-	gulp.src('./src/*.pug')
-		.pipe(pug({
-			pretty: true
-		}))
-		.pipe(gulp.dest('./dist'))
-		.pipe(browSync.stream());
+  gulp.src('./src/*.pug')
+    .pipe(pug({
+      pretty: true
+    }))
+    .pipe(gulp.dest('./dist'))
+    .pipe(browSync.stream());
 });
 
 gulp.task('watch', ['build-js', 'build-css', 'build-html'], () => {
@@ -53,9 +53,10 @@ gulp.task('watch', ['build-js', 'build-css', 'build-html'], () => {
     server: './dist'
   });
 
-  gulp.watch('./src/js/*.js',   ['build-js']);
+  gulp.watch('./src/js/*.js',     ['build-js']);
   gulp.watch('./src/scss/*.scss', ['build-css']);
-  gulp.watch('./src/*.pug',     ['build-html']);;
+  gulp.watch('./src/*.pug',       ['build-html']);;
 });
 
-gulp.task('default', ['build-js', 'build-css', 'build-html', 'watch']);
+gulp.task('default', ['watch']);
+gulp.task('build', ['build-js', 'build-css', 'build-html']);
