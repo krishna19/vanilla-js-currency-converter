@@ -32,7 +32,7 @@ gulp.task('build-css', function() {
   gulp.src('./src/scss/*.scss')
     .pipe(sass())
     .pipe(cleanCSS())
-		.pipe(rename({
+    .pipe(rename({
       suffix: '.min'
     }))
     .pipe(gulp.dest('./dist'))

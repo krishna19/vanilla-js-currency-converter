@@ -1,8 +1,9 @@
 {
   "name": "vanilla-js-currency-converter",
   "version": "1.0.0",
-  "description": "",
+  "description": "Vanilla JavaScript (ES2015) currency converter widget.",
   "license": "Unlicense",
+  "author": "Zoltan Toth",
   "main": "index.js",
   "scripts": {
     "start": "gulp",
