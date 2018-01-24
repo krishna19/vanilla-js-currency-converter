@@ -1,5 +1,6 @@
 # Vanilla JavaScript Currency Converter
 
+Vanilla JavaScript (ES2015) currency converter widget using [Fixer](https://fixer.io/) data. 
 
 ## Demo
 
