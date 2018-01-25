@@ -14,7 +14,7 @@
 * @param {string} options.widgetTitle [options.widgetTitle=Currency Converter] - Widget title.
 * @param {array} options.currencyList [options.currencyList=['CAD', 'USD', 'EUR']] - List of currencies to convert between.
 */
-class CurrencyConverter {
+export default class CurrencyConverter {
     constructor(options) {
         this.element = document.getElementById(options.container || 'converter');
         this.currencies = options.currencyList || ['CAD', 'USD', 'EUR'];
@@ -241,7 +241,7 @@ class CurrencyConverter {
             let xhr = new XMLHttpRequest();
             xhr.open('GET', `https://api.fixer.io/latest?base=${currency}`, true);
             xhr.send();
-            xhr.onreadystatechange = function () {
+            xhr.onreadystatechange = () => {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
                         // console.log("xhr done successfully");
@@ -308,8 +308,3 @@ class CurrencyConverter {
         }
     }
 }
-
-const converter = new CurrencyConverter({
-    container: 'converter_1',
-    widgetTitle: 'ES2015 Currency Converter'
-});

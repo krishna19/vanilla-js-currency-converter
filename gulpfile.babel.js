@@ -15,12 +15,12 @@ const gulp       = require('gulp'),
       cleanCSS   = require('gulp-clean-css');
 
 gulp.task('build-js', ['lint-js'], () => {
-  return browserify({ entries: './src/js/converter.js', debug: true })
+  return browserify({ entries: './src/js/app.js', debug: true })
     .transform('babelify', { 
       presets: ['es2015'] 
     })
     .bundle()
-    .pipe(source('converter.js'))
+    .pipe(source('app.js'))
     .pipe(buffer())
     .pipe(uglify())
     .pipe(rename({
