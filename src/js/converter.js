@@ -304,7 +304,7 @@ export default class CurrencyConverter {
             warning.className = 'converter__error';
             warning.innerText = error;
 
-            this.form.prepend(warning);
+            this.form.getElementsByTagName('fieldset')[0].prepend(warning);
         }
     }
 }
