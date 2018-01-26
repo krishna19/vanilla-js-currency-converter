@@ -6,6 +6,19 @@ Vanilla JavaScript (ES2015) currency converter widget using [Fixer](https://fixe
 
 [**CURRENCY CONVERTER**](https://zoltantothcom.github.io/vanilla-js-currency-converter/)
 
+## Usage
+
+Copy the `dist/converter.js` file into your project and then:
+
+    ```js
+    import CurrencyConverter from './converter';
+
+    const converter = new CurrencyConverter({
+        container: 'my-container-element',
+        widgetTitle: 'ES2015 Currency Converter'
+    });
+    ```
+
 
 ## Options
 
