@@ -39,9 +39,6 @@ gulp.task('build-js', ['lint-js'], () => {
     .pipe(source('converter.js'))
     .pipe(buffer())
     .pipe(uglify())
-    .pipe(rename({
-      suffix: '.min' 
-    }))
     .pipe(gulp.dest('./dist'));
 });
 
