@@ -10,9 +10,11 @@
 *
 * @class
 * @param {object} options - User defined settings for the converter.
-* @param {string} options.container [options.container=converter] - The HTML id of the container in the markup.
+* @param {string} options.container [options.container=converter] - The HTML id of the container 
+* in the markup.
 * @param {string} options.widgetTitle [options.widgetTitle=Currency Converter] - Widget title.
-* @param {array} options.currencyList [options.currencyList=['CAD', 'USD', 'EUR']] - List of currencies to convert between.
+* @param {array} options.currencyList [options.currencyList=['CAD', 'USD', 'EUR']] - List of 
+* currencies to convert between.
 */
 export default class CurrencyConverter {
     constructor(options) {
