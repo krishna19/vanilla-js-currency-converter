@@ -26,7 +26,7 @@ gulp.task('build-js', ['lint-js'], () => {
     .pipe(rename({
       suffix: '.min' 
     }))
-    .pipe(gulp.dest('./dist'))
+    .pipe(gulp.dest('./docs'))
     .pipe(browSync.stream());
 });
 
@@ -43,7 +43,7 @@ gulp.task('build-css', function() {
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('./dist'))
+    .pipe(gulp.dest('./docs'))
     .pipe(browSync.stream());
 });
 
@@ -52,13 +52,13 @@ gulp.task('build-html', function() {
     .pipe(pug({
       pretty: true
     }))
-    .pipe(gulp.dest('./dist'))
+    .pipe(gulp.dest('./docs'))
     .pipe(browSync.stream());
 });
 
 gulp.task('watch', ['build-js', 'build-css', 'build-html'], () => {
   browSync.init({
-    server: './dist'
+    server: './docs'
   });
 
   gulp.watch('./src/js/*.js',     ['build-js']);
