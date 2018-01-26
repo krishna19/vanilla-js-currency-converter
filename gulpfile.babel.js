@@ -14,7 +14,7 @@ const gulp       = require('gulp'),
       pug        = require('gulp-pug'),
       cleanCSS   = require('gulp-clean-css');
 
-gulp.task('build-js', ['lint-js'], () => {
+gulp.task('watch-js', ['lint-js'], () => {
   return browserify({ entries: './src/js/app.js', debug: true })
     .transform('babelify', { 
       presets: ['es2015'] 
@@ -30,13 +30,28 @@ gulp.task('build-js', ['lint-js'], () => {
     .pipe(browSync.stream());
 });
 
+gulp.task('build-js', ['lint-js'], () => {
+  return browserify({ entries: './src/js/converter.js', debug: true })
+    .transform('babelify', { 
+      presets: ['es2015'] 
+    })
+    .bundle()
+    .pipe(source('converter.js'))
+    .pipe(buffer())
+    .pipe(uglify())
+    .pipe(rename({
+      suffix: '.min' 
+    }))
+    .pipe(gulp.dest('./dist'));
+});
+
 gulp.task('lint-js', function() {
   return gulp.src('./src/js/*.js')
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter(stylish));
 });
 
-gulp.task('build-css', function() {
+gulp.task('watch-css', function() {
   gulp.src('./src/scss/*.scss')
     .pipe(sass())
     .pipe(cleanCSS())
@@ -47,7 +62,7 @@ gulp.task('build-css', function() {
     .pipe(browSync.stream());
 });
 
-gulp.task('build-html', function() {
+gulp.task('watch-html', function() {
   gulp.src('./src/*.pug')
     .pipe(pug({
       pretty: true
@@ -56,15 +71,15 @@ gulp.task('build-html', function() {
     .pipe(browSync.stream());
 });
 
-gulp.task('watch', ['build-js', 'build-css', 'build-html'], () => {
+gulp.task('watch', ['watch-js', 'watch-css', 'watch-html'], () => {
   browSync.init({
     server: './docs'
   });
 
-  gulp.watch('./src/js/*.js',     ['build-js']);
-  gulp.watch('./src/scss/*.scss', ['build-css']);
-  gulp.watch('./src/*.pug',       ['build-html']);;
+  gulp.watch('./src/js/*.js',     ['watch-js']);
+  gulp.watch('./src/scss/*.scss', ['watch-css']);
+  gulp.watch('./src/*.pug',       ['watch-html']);;
 });
 
 gulp.task('default', ['watch']);
-gulp.task('build', ['build-js', 'build-css', 'build-html']);
+gulp.task('build', ['build-js']);
