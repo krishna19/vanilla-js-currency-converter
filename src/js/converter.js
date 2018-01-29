@@ -13,6 +13,7 @@
 * @param {string} options.container [options.container=converter] - The HTML id of the container 
 * in the markup.
 * @param {string} options.widgetTitle [options.widgetTitle=Currency Converter] - Widget title.
+* @param {boolean} options.showDisclaimer [options.showDisclaimer=true] - Show disclaimer.
 * @param {array} options.currencyList [options.currencyList=['USD', 'EUR', 'JPY', 'GBP', 'CHF']] - 
 * List of currencies to convert between.
 */
@@ -31,9 +32,7 @@ export default class CurrencyConverter {
             rowTwo = this.createFormFields('converted'),
 
             descriptionOne = this.createDescriptionForRow('Type in amount and select currency:'),
-            descriptionTwo = this.createDescriptionForRow('Converted amount:'),
-
-            disclaimer = this.createDisclaimerSection();
+            descriptionTwo = this.createDescriptionForRow('Converted amount:');
 
         // caching for the current day in local storage
         this.base = null;
@@ -48,7 +47,11 @@ export default class CurrencyConverter {
         fieldset.appendChild(rowOne);
         fieldset.appendChild(descriptionTwo);
         fieldset.appendChild(rowTwo);
-        fieldset.appendChild(disclaimer);
+
+        if (options.showDisclaimer) {
+            const disclaimer = this.createDisclaimerSection();
+            fieldset.appendChild(disclaimer);
+        }
 
         this.form.appendChild(fieldset);
         this.form.className = 'converter';

@@ -24,6 +24,7 @@ Option | Type | Default | Description
 ------ | ---- | ------- | -----------
 container | string | converter | HTML _id_ of the converter container in the HTML markup.
 widgetTitle | string | Currency Converter | The widget title to show on page.
+showDisclaimer | boolean | true | Display the disclaimer section under the converter.
 currencyList | array | ['USD',&nbsp;'EUR',&nbsp;'JPY',&nbsp;'GBP',&nbsp;'CHF'] | List of currencies for the widget. Possible values are: `AUD`, `BGN`, `BRL`, `CAD`, `CHF`, `CNY`, `CZK`, `DKK`, `EUR`, `GBP`, `HKD`, `HRK`, `HUF`, `IDR`, `ILS`, `INR`, `JPY`, `KRW`, `MXN`, `MYR`, `NOK`, `NZD`, `PHP`, `PLN`, `RON`, `RUB`, `SEK`, `SGD`, `THB`, `TRY`, `USD`, `ZAR`
 
 
