@@ -13,13 +13,13 @@
 * @param {string} options.container [options.container=converter] - The HTML id of the container 
 * in the markup.
 * @param {string} options.widgetTitle [options.widgetTitle=Currency Converter] - Widget title.
-* @param {array} options.currencyList [options.currencyList=['CAD', 'USD', 'EUR']] - List of 
-* currencies to convert between.
+* @param {array} options.currencyList [options.currencyList=['USD', 'EUR', 'JPY', 'GBP', 'CHF']] - 
+* List of currencies to convert between.
 */
 export default class CurrencyConverter {
     constructor(options) {
         this.element = document.getElementById(options.container || 'converter');
-        this.currencies = options.currencyList || ['CAD', 'USD', 'EUR'];
+        this.currencies = options.currencyList || ['USD', 'EUR', 'JPY', 'GBP', 'CHF'];
         const title = options.widgetTitle || 'Currency Converter';
 
         this.form = document.createElement('form');
