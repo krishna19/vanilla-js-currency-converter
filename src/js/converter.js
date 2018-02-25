@@ -75,7 +75,7 @@ export default class CurrencyConverter {
             amountConverted = this.element.getElementsByClassName('converter__input')[1],
             amountOriginal = this.element.getElementsByClassName('converter__input')[0].value;
 
-        let storedRates = this.getCahedRates();
+        let storedRates = this.getCachedRates();
 
         if (this.base === currencyConverted) {
             amountConverted.value = amountOriginal;
@@ -97,7 +97,7 @@ export default class CurrencyConverter {
             return;
         }
 
-        let storedRates = this.getCahedRates();
+        let storedRates = this.getCachedRates();
 
         // if rates not present or outdated - it's time to use https://api.fixer.io
         this.base = this.element.getElementsByClassName('converter__select')[0].value;
@@ -131,7 +131,7 @@ export default class CurrencyConverter {
     * Get the cached rates from local storage.
     *
     */
-    getCahedRates() {
+    getCachedRates() {
         let storedRates = localStorage.getItem('currencyRates');
         return JSON.parse(storedRates);
     }
